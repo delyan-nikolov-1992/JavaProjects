@@ -1,0 +1,195 @@
+Beispiel 1
+
+praktomat> stud ben 12345
+Error! There are added no tutors in praktomat.
+praktomat> tut Andy
+Error! Name of tutor must consist of lower case letters.
+praktomat> tut andy
+praktomat> stud ben 12345
+praktomat> tut andy2
+Error! Name of tutor must consist of lower case letters.
+praktomat> tut andrew konnahan
+Error! Wrong number of arguments. Must provide string argument <name>.
+praktomat> tut andrew
+praktomat> stud ben 12345
+Error! a student with id 12345 already exists.
+praktomat> stud ben 12346
+praktomat> stud andrew 12347
+praktomat> tut andy
+praktomat> stud garfield 12348
+praktomat> stud greg 123456
+Error! Student id must be between 10000 and 99999.
+praktomat> list-students
+(12345,ben): andy
+(12346,ben): andrew
+(12347,andrew): andrew
+(12348,garfield): andy
+praktomat> task KITBook
+task id(1)
+praktomat> submit 1 12345 Sehr schwierig!
+Error! Wrong number of arguments. Must provide integer arguments <task_id>, <student_id> and string argument <text>.
+praktomat> submit 1 12345 Sehr_schwierig!
+praktomat> submit 2 12345 Leicht!
+Error! A task with id 2 doesn't exist.
+praktomat> task Mastermind
+task id(2)
+praktomat> submit 2 12345 Leicht!
+praktomat> submit 1 12346 Keine_Ahnung!
+praktomat> submit 1 12347 Es_geht!
+praktomat> review 1 12345 4 Nicht_so_gut!
+andy reviewed (12345,ben) with grade 4
+praktomat> review 1 12346 5
+Error! Wrong number of arguments. Must provide integer arguments <task_id>, <student_id>, <grade> and string argument <text>.
+praktomat> review 1 12346 5 Ich_habe_keinen_Kommentar!
+andrew reviewed (12346,ben) with grade 5
+praktomat> review 1 12347 2.3 Ziemlich_gut!
+Error! Must provide integer arguments <task_id>, <student_id>, <grade>.
+praktomat> review 1 12347 2 Ziemlich_gut!
+andrew reviewed (12347,andrew) with grade 2
+praktomat> summary-task
+task id(1): KITBook
+submitted: 3
+reviewed: 3
+average grade: 3.67
+distribution: 0x1, 1x2, 0x3, 1x4, 1x5
+task id(2): Mastermind
+submitted: 1
+reviewed: 0
+average grade: -
+distribution: 0x1, 0x2, 0x3, 0x4, 0x5
+praktomat> summary-tutor
+andrew: 2 students, 0 missing review(s), average grade 3.50
+andy: 2 students, 1 missing review(s), average grade 4.00
+praktomat> summary-student
+(12347,andrew): 2.00
+(12345,ben): 4.00
+(12346,ben): 5.00
+(12348,garfield): -
+praktomat> reset
+praktomat> summary-student
+Error! There are added no students in praktomat.
+praktomat> summary-tutor
+Error! There are added no tutors in praktomat.
+praktomat> summary-task
+Error! There are added no tasks in praktomat.
+praktomat> quit
+
+Beispiel 2
+
+praktomat> tut andy
+praktomat> reset
+praktomat> stud ben 12345
+Error! There are added no tutors in praktomat.
+praktomat> tut andy
+praktomat> stud ben 12345
+praktomat> stud garfield 12346
+praktomat> stud anrea 12347
+praktomat> task KITBook
+task id(1)
+praktomat> task Praktomat
+task id(2)
+praktomat> task Mastermind
+task id(3)
+praktomat> submit 1 12345 KITBook_ist_leicht!
+praktomat> submit 2 12345 Praktomat_ist_aber_schwierig!
+praktomat> submit 2 12345 So_ist_besser!
+Error! A solution for student with id 12345 for task with id 2 already exists.
+praktomat> submit 3 12345 Mastermind_geht_es!
+praktomat> submit 4 12345 Ganz_leicht!
+Error! A task with id 4 doesn't exist.
+praktomat> review 1 12345 2 Weiter_so!
+andy reviewed (12345,ben) with grade 2
+praktomat> review 2 12345 4 Nicht_so_gut!
+andy reviewed (12345,ben) with grade 4
+praktomat> review 3 12345 5 Ganz_schlecht!
+andy reviewed (12345,ben) with grade 5
+praktomat> summary-student
+(12345,ben): 3.67
+(12346,garfield): -
+(12347,anrea): -
+praktomat> stud anna 12348
+praktomat> submit 1 12348 Leicht!
+praktomat> submit 2 12348 Ein_bisschen_schwieriger!
+praktomat> submit 3 12348 Auch_schwierig!
+praktomat> submit 0 12348 Keine_Ahnung!
+Error! Task id must be positive and student id must be between 10000 and 99999.
+praktomat> review 1 12348 2 Sehr_gut!
+andy reviewed (12348,anna) with grade 2
+praktomat> review 2 12348 4 Nicht_so_gut!
+andy reviewed (12348,anna) with grade 4
+praktomat> review 3 12348 4 Sehr_schlecht_gemacht!
+andy reviewed (12348,anna) with grade 4
+praktomat> summary-student
+(12348,anna): 3.33
+(12345,ben): 3.67
+(12346,garfield): -
+(12347,anrea): -
+praktomat> summary-tutor
+andy: 4 students, 0 missing review(s), average grade 3.50
+praktomat> reset
+praktomat> stud anna 12212
+Error! There are added no tutors in praktomat.
+praktomat> quit
+
+Beispiel 3
+
+praktomat> list-solutions 1
+Error! A task with id 1 doesn't exist.
+praktomat> task KITBook
+task id(1)
+praktomat> list-solutions 1
+Error! There are no solutions for task with id 1.
+praktomat> stud hans 12332
+Error! There are added no tutors in praktomat.
+praktomat> tut bernd
+praktomat> stud Hans 12332
+Error! Name of student must consist of lower case letters.
+praktomat> stud hans 12332
+praktomat> submit 1 12332 KITBook_ist_fertig!
+praktomat> list-solutions 1
+(12332,hans): KITBook_ist_fertig!
+praktomat> summary-task
+task id(1): KITBook
+submitted: 1
+reviewed: 0
+average grade: -
+distribution: 0x1, 0x2, 0x3, 0x4, 0x5
+praktomat> result
+Error! Unknown command: 'result'
+praktomat> results
+task id(1): KITBook
+praktomat> review 1 12332 1 Perfekt_gemacht!
+bernd reviewed (12332,hans) with grade 1
+praktomat> results
+task id(1): KITBook
+12332: 1
+praktomat> reset
+praktomat> tut andrew
+praktomat> summary-stud
+Error! Unknown command: 'summary-stud'
+praktomat> summary-student
+Error! There are added no students in praktomat.
+praktomat> stud ben 12211
+praktomat> stud hans9 12212
+Error! Name of student must consist of lower case letters.
+praktomat> stud hans 12212
+praktomat> task Praktomat
+task id(1)
+praktomat> submit 1 12211 Leicht!
+praktomat> submit 1 12211 Ich_habe_das_gemacht!
+Error! A solution for student with id 12211 for task with id 1 already exists.
+praktomat> submit 1 12212 Ich_habe_das_gemacht!
+praktomat> review 1 12211 1 Sehr_gut!
+andrew reviewed (12211,ben) with grade 1
+praktomat> review 1 12212 1 Ganz_gut!
+andrew reviewed (12212,hans) with grade 1
+praktomat> summary-student
+(12211,ben): 1.00
+(12212,hans): 1.00
+praktomat> summary-tutor
+andrew: 2 students, 0 missing review(s), average grade 1.00
+praktomat> results
+task id(1): Praktomat
+12211: 1
+12212: 1
+praktomat> quit
