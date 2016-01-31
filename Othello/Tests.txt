@@ -1,0 +1,183 @@
+Beispiel 1
+
+othello> newGame 8 8
+othello> print
+--------
+--------
+--------
+---WB---
+---BW---
+--------
+--------
+--------
+turn: black
+othello> possibleMoves
+Possible moves: C4,D3,E6,F5
+othello> hole C4:F4
+Error! Cannot add hole area.
+othello> hole C4:C4
+othello> hole D3:D3
+othello> hole E6:E6
+othello> hole F5:F5
+black passes.
+othello> print
+--------
+--------
+---#----
+--#WB---
+---BW#--
+----#---
+--------
+--------
+turn: white
+othello> possibleMoves
+Possible moves: C5,D6,E3,F4
+othello> hole C5:C5
+othello> hole D6:D6
+othello> hole E3:E3
+othello> hole F4:F4
+Game has ended in a draw.
+othello> print
+Error! No active game.
+othello> quit
+
+Beispiel 2
+
+othello> newGame 8 8 ########,--------,--------,---WB---,---BW---,--------,--------,--------W
+Error! The board is not valid.
+othello> newGame 8 8 ########,--------,--------,---WB---,---BW---,--------,--------,--------,WWWWWWWW
+Error! The board is not valid.
+othello> newGame 8 8 ########,--------,--------,---WB---,---BW---,--------,--------,--------
+othello> print
+########
+--------
+--------
+---WB---
+---BW---
+--------
+--------
+--------
+turn: black
+othello> possibleMoves
+Possible moves: C4,D3,E6,F5
+othello> move C4
+othello> move C3
+othello> print
+########
+--------
+--W-----
+--BWB---
+---BW---
+--------
+--------
+--------
+turn: black
+othello> hole A1:B2
+Error! Cannot add hole area. Game has already started!
+othello> abort
+Game has ended in a draw.
+othello> print
+Error! No active game.
+othello> quit
+
+Beispiel 3
+
+othello> newGame 4 10
+othello> hole D4:A1
+Error! Provide valid positions to add hole area.
+othello> print
+----
+----
+----
+----
+-WB-
+-BW-
+----
+----
+----
+----
+turn: black
+othello> hole A1:D4
+othello> print
+####
+####
+####
+####
+-WB-
+-BW-
+----
+----
+----
+----
+turn: black
+othello> hole A7:D7
+othello> print
+####
+####
+####
+####
+-WB-
+-BW-
+####
+----
+----
+----
+turn: black
+othello> possibleMoves
+Possible moves: A5,D6
+othello> move A5
+othello> possibleMoves
+Possible moves: A6
+othello> move A6
+Game has ended in a draw.
+othello> possibleMoves
+Error! No active game.
+othello> quit
+
+Beispiel 4
+
+othello> newGame
+Error! Wrong number of arguments. Must provide integer arguments <width>, <height>.
+othello> newGame 7 7
+Error! The widht of the board must be an even integer between 2 and 26.
+othello> newGame 8 7
+Error! The height of the board must be an even integer between 2 and 98.
+othello> newGame 8 8
+othello> hole A1:B1:C1
+Error! Provide valid positions to add hole area.
+othello> hole A1,B1
+Error! Provide valid positions to add hole area.
+othello> hole A1:B1
+othello> move A1
+Move not possible.
+othello> possibleMoves
+Possible moves: C4,D3,E6,F5
+othello> move C*4
+Error! Provide a valid position as argument!
+othello> hole C4:C4
+othello> move C4
+Move not possible.
+othello> move 3D
+Error! Provide a valid position as argument!
+othello> move D3
+othello> hole C3:C3
+Error! Cannot add hole area. Game has already started!
+othello> move C3
+othello> move Z68
+Error! Provide a valid position to move a piece!
+othello> move B3
+othello> print
+##------
+--------
+-BBB----
+--#WB---
+---BW---
+--------
+--------
+--------
+turn: white
+othello> newGame 4 4
+Error! There is already an active game.
+othello> abort
+Game Over! black has won (5:2)!
+othello> quit
